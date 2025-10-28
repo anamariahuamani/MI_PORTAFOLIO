@@ -116,5 +116,318 @@
   </div>
 </section>
 
+    socialItem.innerHTML = `
+      <a href="${social.url}" target="_blank" class="social-btn" style="--social-color: ${social.color}">
+        <span class="social-icon">${social.icon}</span>
+        <span class="social-text">${social.platform}</span>
+      </a>
+    `;
+    
 
----
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis redes sociales</title>
+    <style>
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-family: Arial, sans-serif;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .social-icon {
+            font-size: 1.2em;
+        }
+        
+        .tiktok { background: #333; }
+        .linkedin { background: #0077b5; }
+        .twitter { background: #1da1f2; }
+        .instagram { background: #e4405f; }
+        
+    </style>
+</head>
+<body>
+    <!-- Tu contenido del portafolio -->
+    <h1>Mis redes sociales</h1>
+    
+    <!-- Contenedor para redes sociales -->
+    <div id="social-container"></div>
+    
+    <script>
+        // Datos de redes sociales
+        const socialNetworks = [
+            { 
+                name: 'tiktok', 
+                url: 'https://www.tiktok.com/@ana.123976?_t=ZS-90vfel4Z39G&_r=1', 
+                icon: '💻',
+                class: 'tiktok'
+            },
+            { 
+                name: 'LinkedIn', 
+                url: 'https://linkedin.com/in/tuusuario', 
+                icon: '💼',
+                class: 'linkedin'
+            },
+            { 
+                name: 'Twitter', 
+                url: 'https://twitter.com/tuusuario', 
+                icon: '🐦',
+                class: 'twitter'
+            },
+            { 
+                name: 'Instagram', 
+                url: 'https://instagram.com/tuusuario', 
+                icon: '📷',
+                class: 'instagram'
+            
+            }
+        ];
+
+        // Función para crear redes sociales
+        function createSocialLinks() {
+            const container = document.getElementById('social-container');
+            const socialDiv = document.createElement('div');
+            socialDiv.className = 'social-links';
+            
+            socialNetworks.forEach(network => {
+                const link = document.createElement('a');
+                link.href = network.url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.className = `social-link ${network.class}`;
+                link.innerHTML = `
+                    <span class="social-icon">${network.icon}</span>
+                    <span>${network.name}</span>
+                `;
+                
+                socialDiv.appendChild(link);
+            });
+            
+            container.appendChild(socialDiv);
+        }
+
+        // Ejecutar cuando cargue la página
+        document.addEventListener('DOMContentLoaded', createSocialLinks);
+    </script>
+</body>
+</html>
+
+
+<section id="contacto" class="contact-section">
+    <div class="container">
+        <h2>📬 Contacto & Entregas</h2>
+        <p>¿Tienes un proyecto en mente? Contáctame y hablemos sobre cómo puedo ayudarte.</p>
+        
+        <div class="contact-grid">
+            <!-- Formulario de Contacto -->
+            <div class="contact-form">
+                <h3>Envíame un Mensaje</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="nombre" placeholder="Tu nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Tu email" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="tipo-proyecto" required>
+                            <option value="">Tipo de proyecto</option>
+                            <option value="diseño-web">Diseño de vestidos</option>
+                            <option value="app-movil">App de modas</option>
+                            <option value="logo">Diseño de Logo</option>
+                            <option value="branding">mejores calidades</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="mensaje" placeholder="Describe tu proyecto..." rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="archivo">📎 Subir archivos (opcional)</label>
+                        <input type="file" id="archivo" multiple>
+                    </div>
+                    <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+                </form>
+            </div>
+            
+            <!-- Información de Contacto -->
+            <div class="contact-info">
+                <h3>📞 Información de Contacto</h3>
+                <div class="contact-item">
+                    <strong>📧 Email:</strong>
+                    <span id="contact-email">anamariahuamaniayquipa5@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <strong>📱 WhatsApp:</strong>
+                    <span id="whatsapp">945620124</span>
+                </div>
+                </div>
+                
+                <div class="entregas-info">
+                    <h4>🚀 Para Entregas:</h4>
+                    <ul>
+                        <li>Formatos aceptados: .psd, .ai, .figma, .pdf</li>
+                        <li>Tamaño máximo: 50MB por archivo</li>
+                        <li>Tiempo de respuesta: 24-48 horas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Datos de contacto
+const contactData = {
+    email: "anamariahuamaniayquipa@gmail.com",
+    whatsapp: "945620124",
+    telegram: "@anamaria"
+};
+
+// Configurar información de contacto
+function setupContactInfo() {
+    document.getElementById('contact-email').textContent = contactData.email;
+    document.getElementById('whatsapp').textContent = contactData.whatsapp;
+   
+}
+
+// Manejar envío del formulario
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = {
+        nombre: document.getElementById('nombre').value,
+        email: document.getElementById('email').value,
+        proyecto: document.getElementById('tipo-proyecto').value,
+        mensaje: document.getElementById('mensaje').value
+    };
+    
+    // Aquí puedes agregar el código para enviar el formulario
+    // a tu email o servicio de backend
+    enviarMensaje(formData);
+});
+
+function enviarMensaje(data) {
+    // Simulación de envío - reemplaza con tu servicio real
+    console.log("Mensaje enviado:", data);
+    alert("¡Mensaje enviado! Te contactaré pronto.");
+    document.getElementById('contactForm').reset();
+}
+
+// Inicializar
+setupContactInfo();
+</script>
+
+<style>
+.contact-section {
+    padding: 60px 20px;
+    background: #f8f9fa;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.btn-enviar {
+    background: #3498db;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.btn-enviar:hover {
+    background: #2980b9;
+}
+
+.contact-info {
+    background: rgb(159, 181, 196);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.contact-item {
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.entregas-info {
+    margin-top: 30px;
+    padding: 20px;
+    background: #e8f4fc;
+    border-radius: 5px;
+}
+
+.entregas-info ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.entregas-info li {
+    margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
